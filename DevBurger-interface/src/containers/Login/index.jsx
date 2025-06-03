@@ -10,7 +10,8 @@ export function Login() {
             </LeftContainer>
             <RightContainer>
                 <Title>
-                    Bem vindo ao <span>Dev Burguer</span> Acesse
+                    Bem vindo ao <span>Dev Burguer</span>
+                    <br /> Acesse
                 </Title>
                 <Form>
                     <InputContainer>
@@ -23,9 +24,11 @@ export function Login() {
                     </InputContainer>
                     <Link>Esqueci minha senha</Link>
                     <Button>Entrar</Button>
-                    <Link>Não possui conta e deseja criar a sua? Clique aqui e faça seu cadastro</Link>
+
                 </Form>
+                <p>Não possui conta e deseja criar a sua? <a>Clique aqui e faça seu cadastro</a></p>
             </RightContainer>
-        </Container>
+
+        </Container >
     );
 }
