@@ -43,8 +43,10 @@ p{
     color: #1e1e1e;
     font: 18px;
     font-weight: 800;
+    font-family: "Poppins", sans-serif;
     a{
     text-decoration: underline;
+    font-family: "Poppins", sans-serif;
     }
 }
 
@@ -57,7 +59,7 @@ max-width: 50%;
 
 `;
 export const Title = styled.h2` 
-font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+font-family: "Poppins", sans-serif;
 font-size: 40px;
 
 span{
@@ -91,9 +93,10 @@ input{
 
 }
 label{
-font-size: 18px;
-font-weight: 600;
-//color: ;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    //color: ;
 
 
 }
@@ -101,6 +104,4 @@ font-weight: 600;
 `;
 
 export const Link = styled.a`
-`;
-export const Button = styled.button`
 `;
