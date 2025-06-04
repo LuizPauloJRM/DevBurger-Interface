@@ -39,6 +39,14 @@ justify-content: center;
 align-items: center;
 flex-direction: column;
 background-color: #1e1e1e;
+p{
+    color: #1e1e1e;
+    font: 18px;
+    font-weight: 800;
+    a{
+    text-decoration: underline;
+    }
+}
 
 
 background: url('${Background}');

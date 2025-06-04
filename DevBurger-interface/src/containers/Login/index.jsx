@@ -26,7 +26,9 @@ export function Login() {
                     <Button>Entrar</Button>
 
                 </Form>
-                <p>Não possui conta e deseja criar a sua? <a>Clique aqui e faça seu cadastro</a></p>
+                <p>
+                    Não possui conta e deseja criar a sua? <a>Clique aqui e faça seu cadastro</a>
+                </p>
             </RightContainer>
 
         </Container >
