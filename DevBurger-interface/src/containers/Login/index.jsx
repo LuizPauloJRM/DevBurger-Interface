@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { api } from '../../services/api';
 
 import Logo from '../../assets/logo.svg'
 import { Container, Form, InputContainer, LeftContainer, Link, RightContainer, Title } from "./styles";
@@ -23,7 +24,17 @@ export function Login() {
     });
     console.log(errors)
 
-    const onSubmit = (data) => console.log(data);
+
+
+    const onSubmit = async (data) => {
+        const response = await api.post('/session', {
+            email: data.email,
+            password: data.password,
+        });
+        console.log(response);
+    };
+
+
 
     return (
         <Container>
