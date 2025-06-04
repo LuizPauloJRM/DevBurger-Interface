@@ -103,6 +103,14 @@ label{
 
 
 }
+p{
+    font-size: 14px;
+    line-height: 80%;
+    color: #cf3057;
+    height: 10px;
+    font-weight: 600;
+    
+}
 
 `;
 
