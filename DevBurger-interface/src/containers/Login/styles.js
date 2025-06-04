@@ -61,9 +61,12 @@ max-width: 50%;
 export const Title = styled.h2` 
 font-family: "Poppins", sans-serif;
 font-size: 40px;
+font-weight: 600;
 
 span{
     color: #7fff00;
+    font-family: 'Poppins' ,Arial, Helvetica, sans-serif;
+    font-weight: 700;
 }
 
 `;
