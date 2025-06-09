@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import GlobalStyles from './styles/globalsStyles';
 import { ToastContainer } from 'react-toastify';
 
-import { Login } from './containers/Login/index';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Login />
+    <RouterProvider router={router} />
     <GlobalStyles />
     <ToastContainer />
   </React.StrictMode>,
