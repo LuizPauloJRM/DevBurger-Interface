@@ -29,27 +29,31 @@ export function Register() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await toast.promise(
-                api.post('/users', {
-                    name: data.name,
-                    email: data.email,
-                    password: data.password,
-                }),
-                {
-                    pending: 'Verificando dados...',
-                    success: 'Cadastro efetuado com sucesso!',
-                    error: {
-                        render({ data }) {
-                            if (data?.response?.data?.message) {
-                                return data.response.data.message;
-                            }
-                            return 'Tente novamente, algo está errado!';
-                        }
-                    },
-                }
-            );
-            console.log(response);
+            const response = await api.post('/users', {
+                name: data.name,
+                email: data.email,
+                password: data.password,
+            }, {
+                validateStatus: () => true,
+            });
+
+            if (response.status === 201 || response.status === 200) {
+                toast.success('Usuário cadastrado com sucesso!');
+            } else if (response.status === 409 || (response.data?.message && response.data.message.toLowerCase().includes('email'))) {
+                toast.error('Email já cadastrado!');
+            } else if (response.status === 500) {
+                toast.error('Falha no sistema, tente novamente mais tarde!');
+            } else {
+                toast.error('Tente novamente, algo está errado!');
+            }
         } catch (error) {
+            if (error.response?.status === 409 || (error.response?.data?.message && error.response.data.message.toLowerCase().includes('email'))) {
+                toast.error('Email já cadastrado!');
+            } else if (error.response?.status === 500) {
+                toast.error('Falha no sistema, tente novamente mais tarde!');
+            } else {
+                toast.error('Tente novamente, algo está errado!');
+            }
             console.error(error);
         }
     };
