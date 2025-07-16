@@ -95,11 +95,11 @@ export function Register() {
                     <Link>Esqueci minha senha</Link>
                     <Button type='submit'>Criar a sua conta</Button>
                     <p>
-                        Já possui conta? <a href="#">Clique aqui para entrar</a>
+                        Já possui conta? <Link to="/login">Clique aqui para entrar</Link>
                     </p>
                 </Form>
             </RightContainer>
             <ToastContainer />
-        </Container>
+        </Container >
     );
 }

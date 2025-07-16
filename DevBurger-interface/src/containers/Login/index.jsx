@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 import { api } from '../../services/api';
 import Logo from '../../assets/logo.svg';
@@ -10,6 +10,7 @@ import { Container, Form, InputContainer, LeftContainer, Link, RightContainer, T
 import { Button } from '../../components/Button';
 
 export function Login() {
+    const navigate = useNavigate();
     const schema = yup.object({
         email: yup.string().email('Digite um email valido').required('O email é obrigatório'),
         password: yup.string().min(6, 'A senha deve ter pelo menos 6 caracteres').required('Digite a senha'),
@@ -24,18 +25,27 @@ export function Login() {
     });
 
     const onSubmit = async (data) => {
-        const response = await toast.promise(
-            api.post('/sessions', {
-                email: data.email,
-                password: data.password,
-            }),
-            {
-                pending: 'Verificando dados',
-                success: 'Seja bem vindo',
-                error: 'Email ou Senha incorretos',
-            }
-        );
-        console.log(response);
+        try {
+            await toast.promise(
+                api.post('/sessions', {
+                    email: data.email,
+                    password: data.password,
+                }),
+                {
+                    pending: 'Verificando dados...',
+                    success: {
+                        render() {
+                            navigate('/'); // Redireciona imediatamente após login
+                            return 'Seja bem vindo ao Dev Burguer!';
+                        },
+                    },
+                    error: 'Email ou senha incorretos!',
+                }
+            );
+        } catch (error) {
+            toast.error('Erro ao tentar logar. Tente novamente mais tarde!');
+            console.error(error);
+        }
     };
 
     return (
@@ -63,8 +73,7 @@ export function Login() {
                     <Link>Esqueci minha senha</Link>
                     <Button type='submit'>Entrar</Button>
                     <p>
-                        Não possui conta e deseja criar a sua?{' '}
-                        <RouterLink to="/register">Clique aqui e faça seu cadastro</RouterLink>
+                        Não possui conta e deseja criar a sua? <RouterLink to="/register">Clique aqui</RouterLink>
                     </p>
                 </Form>
             </RightContainer>

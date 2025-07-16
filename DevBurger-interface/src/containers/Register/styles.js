@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link as ReactLink } from "react-router-dom";
+
 import BackgroundLogin from '../../assets/pexels-valeria-boltneva-1639562 1.svg'
 import Background from '../../assets/Group 195.svg'
 
@@ -110,5 +112,7 @@ p{
 
 `;
 
-export const Link = styled.a`
+export const Link = styled(ReactLink)`
+    text-decoration: none;
+    color: #7fff00; 
 `;
